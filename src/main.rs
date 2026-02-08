@@ -30,5 +30,16 @@ fn main() {
         } else {
             Command::new("sh").args(["-c", cmd_to_run]).output()
         };
+
+        // Printing the results
+        match output {
+            Ok(out) => {
+                println!("{}", String::from_utf8_lossy(&out.stdout));
+                if !out.stderr.is_empty() {
+                    println!("Error : {}", String::from_utf8_lossy(&out.stderr));
+                }
+            }
+            Err(e) => println!("Failed to execute: {}", e),
+        }
     }
 }
