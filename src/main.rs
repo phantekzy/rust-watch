@@ -1,5 +1,5 @@
 #![allow(unused)]
-use std::env;
+use std::{env, process::Command};
 
 fn main() {
     // Get commands from the CLI
@@ -23,5 +23,12 @@ fn main() {
         print!("\x1B[2J\x1B[1;1H");
         println!("R-WATCH | Command: {} | Every {}s", cmd_to_run, interval);
         println!("--------------------------------------------------");
+
+        // Command executions
+        let output = if cfg!(target_os = "windows") {
+            Command::new("cmd").args(["/C", cmd_to_run]).output()
+        } else {
+            Command::new("sh").args(["-c", cmd_to_run]).output()
+        };
     }
 }
