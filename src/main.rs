@@ -18,4 +18,10 @@ fn main() {
     let cmd_to_run = &args[2];
 
     println!("Watching: {} every {}s", cmd_to_run, interval);
+
+    loop {
+        print!("\x1B[2J\x1B[1;1H");
+        println!("R-WATCH | Command: {} | Every {}s", cmd_to_run, interval);
+        println!("--------------------------------------------------");
+    }
 }
