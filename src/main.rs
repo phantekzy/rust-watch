@@ -4,6 +4,7 @@ use std::env;
 fn main() {
     // Get commands from the CLI
     let args: Vec<String> = env::args().collect();
+
     if args.len() < 3 {
         println!("Usage: rwatch <seconds> <command>");
         println!("Example: rwatch 2 \"netstat -ant\" ");
@@ -15,4 +16,6 @@ fn main() {
         .expect("Please provide a number for seconds");
 
     let cmd_to_run = &args[2];
+
+    println!("Watching: {} every {}s", cmd_to_run, interval);
 }
