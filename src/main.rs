@@ -1,5 +1,5 @@
 #![allow(unused)]
-use std::{env, process::Command};
+use std::{env, process::Command, thread, time::Duration};
 
 fn main() {
     // Get commands from the CLI
@@ -41,5 +41,8 @@ fn main() {
             }
             Err(e) => println!("Failed to execute: {}", e),
         }
+
+        // Wait before the next loop
+        thread::sleep(Duration::from_secs(interval));
     }
 }
