@@ -9,4 +9,8 @@ fn main() {
         println!("Example: rwatch 2 \"netstat -ant\" ");
         return;
     }
+
+    let interval: u64 = args[1]
+        .parse()
+        .expect("Please provide a number for seconds");
 }
