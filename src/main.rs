@@ -13,4 +13,6 @@ fn main() {
     let interval: u64 = args[1]
         .parse()
         .expect("Please provide a number for seconds");
+
+    let cmd_to_run = &args[2];
 }
